@@ -11,7 +11,8 @@
     <% @list.movies.each do |movie| %>
       <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
       <div class="card-trip">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+
+      <img src="#{<%= movie.poster_url %>}" />
       <div class="card-trip-infos">
         <div>
           <h2><%= movie.title %></h2>
