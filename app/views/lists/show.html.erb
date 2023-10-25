@@ -1,4 +1,33 @@
-<h1><%= @list.name %></h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+  <div class="container text-center">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+
+<div class="container  py-5">
+  <%= link_to "Add movie", new_list_bookmark_path(@list.id), class: "btn btn-success btn-add-movie me-5 mb-5" %>
+
+  <div class="list-all">
+    <% @list.movies.each do |movie| %>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+      <div class="card-trip">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= movie.title %></h2>
+          <p><%= movie.overview %></p>
+        </div>
+        <h2 class="card-trip-pricing"><%= link_to "Delete",
+        bookmark_path(bookmark), class: "text-danger",
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %></h2>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+</div>
 
 
-<%= link_to "Add movie", new_list_bookmark_path(@list.id) %>
+
+<%= link_to "Back to home", root_path	 %>

@@ -1,11 +1,23 @@
-<h1>All List</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1485095329183-d0797cdc5676?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+  <div class="container text-center">
+    <h1>Save any kinf of movies</h1>
+    <p>Classic</p>
+  </div>
+</div>
 
-<%= link_to "New list", new_list_path %>
-<%= link_to "My lists" %>
 
-<h2>My lists</h2>
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to "#{list.name}", list_path(list.id) %></li>
-  <% end %>
-</ul>
+
+
+<div class="container py-5">
+  <div class="top mb-5">
+    <h2>My lists</h2>
+    <%= link_to "New list", new_list_path, class: "btn btn-success" %>
+  </div>
+  <div class="list-all">
+    <% @lists.each do |list| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1502033491742-0e11fb057e16?auto=format&fit=crop&q=80&w=1932&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)">
+        <p><%= link_to "#{list.name}", list_path(list.id) %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
