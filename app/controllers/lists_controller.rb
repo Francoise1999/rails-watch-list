@@ -1,7 +1,7 @@
 require "cloudinary"
 
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show]
+  before_action :set_list, only: [:show, :destroy]
 
   # def upload
   #   uploaded_file = params[:model][:image]
@@ -30,7 +30,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(list_params)
+    @list = List.new(list_params.except(:photo))
     @list.save
     redirect_to root_path
   end
@@ -41,6 +41,11 @@ class ListsController < ApplicationController
     @bookmarks.each do |bookmark|
       @movies << Movie.find(bookmark.movie_id)
     end
+  end
+
+  def destroy
+    @list.destroy
+    redirect_to root_path
   end
 
   private
